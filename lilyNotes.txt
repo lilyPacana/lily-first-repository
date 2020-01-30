@@ -1,0 +1,98 @@
+newwwwwww
+
+
+create table Category
+(
+    catID int(5) not null primary Key,
+    catDescription varchar(15) not null
+);
+
+
+
+create table Organizer 
+( organizerID int(10) not null primary key, 
+ orgLname char(15) not null, 
+orgFname char(15) not null, 
+orgMname char(15) not null, 
+orgGender char(15) not null, 
+orgDOB date not null, 
+orgStreet varchar(30) not null, 
+orgCity varchar(20) not null, 
+orgState varchar(30) not null, 
+orgZipCode varchar(30) not null, 
+orgPhone int(15) not null 
+)
+
+
+create table Participant
+(
+    participantID int(15) not null primary key,
+    partLname char(15) not null,
+    partFname char(15) not null,
+    partMname char(15) not null,
+    partGender char(10) not null,
+    partDOB	date not null,
+    partStreet varchar(30) not null,
+    partCity varchar(30) not null,
+    partState varchar(15) not null,
+    partZipCode varchar(15) not null,
+    partPhone int(15) not null
+)
+
+
+create table Time
+(
+    timeID int(15) not null primary key,
+    timeSched char(10) not null
+    )
+
+
+create table Schedule
+(
+    schedID int(10) not null primary key,
+    schedDate date not null,
+    timeID int(10) not null,
+    participantID int(15) not null,
+    FOREIGN key (timeID) REFERENCES time (timeID),
+    FOREIGN key (participantID) REFERENCES participant (participantID)
+    )
+
+create table registration
+(
+    regID int (10) not null PRIMARY key,
+    regDate date not null,
+    participantID int (10) not null,
+    accomID int (10) not null,
+    catID int (5) not null,
+    organizerID int (10) not null,
+    foreign key (participantID) references participant (participantID),
+    foreign key (accomID) references accomodation (accomID),
+    foreign key (organizerID) references organizer (organizerID),
+    FOREIGN key (catID) REFERENCES category (catID)
+   )
+
+
+
+insert into participant (participantID,partLname,partFname,partMname,partGender,partDOB,partStreet,partCity,partState,partZipCode,partPhone)
+VALUES
+
+	(1, 'Kraft', 'Susan', 'C', 'female', '1980-1-5', '3121 Big Indian', 'Yscloskey', 'LA','70085', '504-676-8519'),
+    (2, 'Dawes', 'Joyce', 'R', 'female', '1990-1-24', '855 Worthington Drive', 'Irving', 'TX', '75062', '972-607-6435'),
+    (3, 'Fisher', 'Leonard', 'E', 'male', '1973-8-5', '3258 Lindale Avenue', 'Concord', 'CA', '94520', '505-624-4701'),
+    (4, 'Wolfe', 'Janet', 'J', 'female', '1982-4-3', '293 Bird Street', 'Roswell', 'NM', '88201', '505-624-4701'),
+    (5, 'Sheller', 'Kristen', 'C', 'female', '1962-1-1', '2220 Turnpike Drive', 'HUNTSVILLE', 'AL', '35806', '256-441-0098'),
+    (6, 'Gresham', 'Ruth', 'J', 'female', '1956-1-23', '2994 Sardis Station', 'Minneapolis', 'MN', '55414', '612-362-0399'),
+    (7, 'Gagnon', 'Chris', 'J', 'male', '1981-4-18', '1108 Johnny Lane', 'Milwaukee', 'WI', '53217', '414-247-9167'),
+    (8, 'Bombard', 'Deborah', 'R', 'female', '1956-2-15', '2043 Adams Drive', 'Houston', 'TX', '77006', '979-501-4490'),
+    (9, 'Farmer', 'Mary', 'F', 'female', '1993-9-30', '2495 Huntz Lane', 'Peabody', 'MA', '1960', '978-531-6476'),
+    (10, 'Keller', 'Margaret', 'K', 'female', '1979-11-7', '2906 Sunny Glen Lane', 'Warrensville Heights', 'OH', '44128', '216-819-1889'),
+    (11, 'Shivers', 'Mario', 'N', 'male', '1985-11-20', '575 Comfort Court', 'Madison', 'WI', '53703', '608-256-1550'),
+    (12, 'Creech', 'Reyes', 'M', 'male', '1982-12-26', '4516 Roosevelt Wilson Lane', 'Upland', 'CA', '91786', '909-931-4974'),
+    (13, 'Felton', 'Robert', 'C', 'male', '1957-11-2', '2217 Kildeer Drive', 'Pompano Beach', 'FL', '33064', '754-581-0093'),
+    (14, 'Sanchez', 'Henry', 'A', 'male', '1968-6-3', '2759 Simpson Square', 'Stillwater', 'OK', '74074', '580-663-8204'),
+    (15, 'Dimatteo', 'Dorothy', 'R', 'female', '1958-2-18', '505 Kenwood Place', 'Fort Lauderdale', 'FL', '33306', '954-566-6824'),
+    (16, 'Tocco', 'Floyd', 'V', 'male', '1963-1-17', '1333 Florence Street', 'HUNTINGTON', 'WV', '25778', '903-441-0538'),
+    (17, 'Mowrer', 'Theresa', 'J', 'female', '1974-1-17', '1352 Still Pastures Drive', 'DAWSON', 'AL', '35963', '803-465-6552'),
+    (18, 'Bryson', 'Gary', 'B', 'male', '1981-12-11', '3057 Cunningham Court', 'OCALA', 'FL', '34475', '248-696-2658'),
+    (19, 'McLelland', 'Jonathan', 'M', 'male', '1988-1-26', '3043 Bubby Drive', 'Austin', 'TX', '78749', '512-431-0222'),
+    (20, 'Hart', 'John', 'A', 'male', '1969-5-24', '1639 Lightning Point Drive', 'Memphis', 'TN', '38128', '901-534-3164')
